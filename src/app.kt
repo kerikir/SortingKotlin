@@ -6,7 +6,7 @@ fun main()
     println("Быстрая сортировка:");
 
     // Печать исходного массива
-    drawLine('=', 35);
+    drawLine('=', 120);
     println("Исходный массив:")
     var arrayNumbersQuickSort: IntArray = fillArrayRandomNumbers(20, 1, 100);
     for(i in 0..< arrayNumbersQuickSort.size)
@@ -22,10 +22,10 @@ fun main()
     println("Отсортированный массив:")
     for(i in 0..< arrayNumbersQuickSort.size)
     {
-        print(i.toString() + "\t");
+        print(arrayNumbersQuickSort[i].toString() + "\t");
     }
     println();
-    drawLine('=', 35);
+    drawLine('=', 120);
 
 
 //    println("Укажите размер массива:");

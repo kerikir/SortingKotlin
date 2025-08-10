@@ -17,14 +17,18 @@ public fun quickSort(arrayNumbers: IntArray): IntArray
  */
 private fun partition(array: IntArray, left: Int, right: Int): Int
 {
-    val supportIndex: Int = (right - left) / 2
+    val supportIndex: Int = left + (right - left) / 2
     val x: Int = array[supportIndex];
     var index: Int = left;
     var value: Int;
 
-    for (i in 1.. right)
+    value = array[right];
+    array[right] = array[supportIndex];
+    array[supportIndex] = value;
+
+    for (i in left..< right)
     {
-        if(array[i] <= x && i != supportIndex)
+        if(array[i] <= x)
         {
             value = array[i];
             array[i] = array[index];
@@ -35,8 +39,8 @@ private fun partition(array: IntArray, left: Int, right: Int): Int
     }
 
     value = array[index];
-    array[index] = array[supportIndex];
-    array[supportIndex] = value;
+    array[index] = array[right];
+    array[right] = value;
 
     return index;
 }
