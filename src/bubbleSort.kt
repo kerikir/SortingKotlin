@@ -5,11 +5,11 @@ public fun <T: Comparable<T>> bubbleSort(array: Array<T>)
 {
     for (i in 0..array.lastIndex - 1)
     {
-        for (j in 1..array.lastIndex - i)
+        for (j in 0..< array.lastIndex - i)
         {
-            if (array[i] > array[j])
+            if (array[j] > array[j + 1])
             {
-                swap(array, i, j)
+                swap(array, j, j + 1)
             }
         }
     }
