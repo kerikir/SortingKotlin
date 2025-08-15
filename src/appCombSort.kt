@@ -44,7 +44,14 @@ fun main()
     val combSort = CombSort(people)
     combSort.sort()
 
-    println("Отсортированный массив:")
+    println("Отсортированный массив по возрасту:")
     people.forEach { person: Person -> println(person) }
+    println("\n\n\n")
+
+    val personComparator = Comparator { p1: Person, p2: Person -> p1.firstName.compareTo(p2.firstName) }
+    combSort.sort(personComparator)
+
+    println("Отсортированный массив по именам:")
+    people.forEach { println(it) }
     println("\n\n\n")
 }

@@ -27,5 +27,30 @@ class  CombSort <T: Comparable<T>> (val array: Array<T>)
             step /= factor
             stepInteger = round(step).toInt()
         }
+
+        step = array.size / factor
+        stepInteger = round(step).toInt()
+    }
+
+
+    public fun sort(comparator: Comparator<T>) : Unit
+    {
+        while(step >= 1.0)
+        {
+            for (i in stepInteger..array.lastIndex)
+            {
+                if (comparator.compare(array[i - stepInteger], array[i]) > 0)
+                    (array[i] to array[i - stepInteger]).apply {
+                        array[i - stepInteger] = this.first
+                        array[i] = this.second
+                    }
+            }
+
+            step /= factor
+            stepInteger = round(step).toInt()
+        }
+
+        step = array.size / factor
+        stepInteger = round(step).toInt()
     }
 }
