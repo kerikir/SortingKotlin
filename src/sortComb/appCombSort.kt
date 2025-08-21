@@ -1,4 +1,4 @@
-import sortComb.CombSort
+package sortComb
 
 class Person(val firstName: String): Comparable<Person>
 {

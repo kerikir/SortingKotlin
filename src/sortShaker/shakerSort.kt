@@ -1,4 +1,4 @@
-package shakerSort
+package sortShaker
 
 fun <T: Comparable<T>> Array<T>.sortShaker(): Unit
 {

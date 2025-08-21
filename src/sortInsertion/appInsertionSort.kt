@@ -1,4 +1,4 @@
-import sortingInsertion.InsertionSort
+package sortInsertion
 
 fun main()
 {

@@ -1,4 +1,4 @@
-package sortingInsertion
+package sortInsertion
 
 class InsertionSort
 {

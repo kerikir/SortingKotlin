@@ -1,7 +1,7 @@
-import java.math.BigDecimal
-import java.math.RoundingMode
-import kotlin.math.round
+package sortQuick
+
 import kotlin.random.Random
+
 
 fun main()
 {
@@ -22,26 +22,6 @@ fun main()
     // Печать отсортированного массива
     printArrayInfo("Отсортированный массив", arrayNumbersQuickSort);
     drawLine(ch, numberRepeat);
-    println("\n\n\n")
-
-
-    // Быстрая сортировка
-    println("Сортировка пузырьком:")
-
-    drawLine(ch, numberRepeat)
-    val arrayDoubleBubbleSort = Array<Double>(15)
-    {
-        BigDecimal(Random.nextDouble(5.0)).setScale(
-            2,
-            RoundingMode.HALF_EVEN
-        ).toDouble()
-    }
-    printArrayInfo("Исходный массив", arrayDoubleBubbleSort)
-
-    bubbleSort(arrayDoubleBubbleSort)
-
-    printArrayInfo("Отсортированный массив", arrayDoubleBubbleSort)
-    drawLine(ch, numberRepeat)
     println("\n\n\n")
 }
 

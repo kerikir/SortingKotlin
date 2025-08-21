@@ -1,4 +1,4 @@
-import shakerSort.sortShaker
+package sortShaker
 
 fun main()
 {
