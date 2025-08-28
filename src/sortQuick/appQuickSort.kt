@@ -13,7 +13,7 @@ fun main()
 
     // Печать исходного массива
     drawLine(ch, numberRepeat);
-    var arrayNumbersQuickSort: IntArray = fillArrayRandomNumbers(20, 1, 100);
+    var arrayNumbersQuickSort: IntArray = fillArrayRandomNumbers(75, 1, 100);
     printArrayInfo("Исходный массив", arrayNumbersQuickSort);
 
     // Выполнение быстрой сортировки
@@ -63,6 +63,10 @@ fun printArrayInfo(info: String, array: IntArray)
     println("$info :")
     for(i in 0..< array.size)
     {
+        if (i % 20 == 0 && i > 0)
+        {
+            println()
+        }
         print(array[i].toString() + "\t");
     }
     println();
