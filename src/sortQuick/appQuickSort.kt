@@ -1,9 +1,11 @@
 package sortQuick
 
 import kotlin.random.Random
+import kotlin.time.Duration
+import kotlin.time.measureTime
 
 
-fun main()
+suspend fun main()
 {
     val ch: Char = '=';
     val numberRepeat: Int = 120;
@@ -13,16 +15,20 @@ fun main()
 
     // Печать исходного массива
     drawLine(ch, numberRepeat);
-    var arrayNumbersQuickSort: IntArray = fillArrayRandomNumbers(20, 1, 100);
+    var arrayNumbersQuickSort: IntArray = fillArrayRandomNumbers(100, 1, 100);
     printArrayInfo("Исходный массив", arrayNumbersQuickSort);
 
     // Выполнение быстрой сортировки
-    arrayNumbersQuickSort = quickSort(arrayNumbersQuickSort);
+    val time: Duration = measureTime {
+        arrayNumbersQuickSort = quickSort(arrayNumbersQuickSort);
+    }
 
     // Печать отсортированного массива
     printArrayInfo("Отсортированный массив", arrayNumbersQuickSort);
     drawLine(ch, numberRepeat);
     println("\n\n\n")
+
+    println("Time execution = ${time.inWholeMilliseconds} ms.")
 }
 
 
@@ -63,6 +69,10 @@ fun printArrayInfo(info: String, array: IntArray)
     println("$info :")
     for(i in 0..< array.size)
     {
+        if (i % 20 == 0 && i > 0)
+        {
+            println()
+        }
         print(array[i].toString() + "\t");
     }
     println();

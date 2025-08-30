@@ -1,5 +1,8 @@
 package sortQuick
 
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.launch
+
 /**
  * Быстрой сортировка массива чисел
  */
@@ -58,5 +61,47 @@ private fun quickSortCalculate(array: IntArray, left: Int, right: Int)
         var supIndex = partition(array, left, right);
         quickSortCalculate(array, left, supIndex - 1);
         quickSortCalculate(array, supIndex + 1, right);
+    }
+}
+
+
+/** Параллельная быстрая сортировка массива чисел */
+public suspend fun quickSortParallel(arrayNumbers: IntArray): IntArray
+{
+    val length: Int = arrayNumbers.size;
+
+    if(length > 1)
+        quickSortCalculateParallel(arrayNumbers, 0, length - 1);
+
+    return arrayNumbers;
+}
+
+
+/**
+ * Выполнение параллельного алгоритма быстрой сортировки
+ */
+private suspend fun quickSortCalculateParallel(array: IntArray, left: Int, right: Int) = coroutineScope {
+
+    if(left < right)
+    {
+        var supIndex = partition(array, left, right);
+
+        if (supIndex - 1 - left >= 25)
+        {
+            launch { quickSortCalculate(array, left, supIndex - 1); }
+        }
+        else
+        {
+            quickSortCalculate(array, left, supIndex - 1);
+        }
+
+        if (supIndex - 1 - left >= 25)
+        {
+            launch { quickSortCalculate(array, supIndex + 1, right); }
+        }
+        else
+        {
+            quickSortCalculate(array, supIndex + 1, right);
+        }
     }
 }
